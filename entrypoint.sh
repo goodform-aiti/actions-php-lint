@@ -19,10 +19,10 @@ if [ ! -d "${DIR_TO_SCAN}" ] && [ ! -f "${DIR_TO_SCAN}" ]; then
   exit 2
 fi
 
-echo "###github event before:"
-echo ${{ github.event.base_ref }}
-echo "###github sha:"
-echo ${{ github.event.before }}
+echo "###LATEST COMMIT:"
+echo $CURRENT_COMMIT
+echo "###PREVIOUS COMMIT"
+echo $PREVIOUS_COMMIT
 #CHANGED_FILES=$(git diff --name-only --diff-filter=AM ${{ github.event.before }} ${{ github.sha }})
 #echo $CHANGED_FILES
 #CHANGED_FILES=$(git diff --name-only --diff-filter=AM master...HEAD)
