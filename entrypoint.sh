@@ -20,9 +20,9 @@ if [ ! -d "${DIR_TO_SCAN}" ] && [ ! -f "${DIR_TO_SCAN}" ]; then
 fi
 
 echo "###github event before:"
-echo ${{ github.event.before }}
+echo ${{ github.event.base_ref }}
 echo "###github sha:"
-echo ${{ github.sha }}
+echo ${{ github.event.before }}
 #CHANGED_FILES=$(git diff --name-only --diff-filter=AM ${{ github.event.before }} ${{ github.sha }})
 #echo $CHANGED_FILES
 #CHANGED_FILES=$(git diff --name-only --diff-filter=AM master...HEAD)
