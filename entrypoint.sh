@@ -1,5 +1,5 @@
 #!/bin/sh
-set -e	set -e
+set -e
 
 
 PHP_FULL_VERSION=$(php -r 'echo phpversion();')	
