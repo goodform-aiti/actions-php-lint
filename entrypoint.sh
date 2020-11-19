@@ -2,6 +2,10 @@
 set -e
 
 
+
+CHANGED_CORE_FILES=$(cat CHANGED_FILES_PHP)
+CHANGED_CORE_FILES=$(cat CHANGED_CORE_FILES)
+
 PHP_FULL_VERSION=$(php -r 'echo phpversion();')	
 
 
@@ -49,12 +53,12 @@ ERROR=0
 
 
 echo "CHANGED_FILES_PHP start:"
-cat CHANGED_FILES_PHP
+echo ${CHANGED_FILES_PHP}
 echo "CHANGED_FILES_PHP end"
 
 
 echo "CHANGED_CORE_FILES start:"
-cat CHANGED_CORE_FILES
+echo ${CHANGED_CORE_FILES}
 echo "CHANGED_CORE_FILES end"
 
 
