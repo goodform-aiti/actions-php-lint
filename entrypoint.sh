@@ -44,7 +44,7 @@ done
 ERROR=0	
 
 # AMIR:
-AMIR=$(grep -P '^app/code/core/.' <<<  $CHANGED_FILES_PHP)
+AMIR=$(grep -P '^app/code/core/.' <<<  ${CHANGED_FILES_PHP})
 echo ${AMIR}
 for file in ${AMIR}; do	
   RESULTS=$(php -l ${file} || true)	
