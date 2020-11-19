@@ -48,8 +48,6 @@ for file in ${CHANGED_FILES_PHP}; do
 done	
 
 
-ERROR=0	
-
 
 
 echo "CHANGED_FILES_PHP start:"
