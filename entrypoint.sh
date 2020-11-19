@@ -45,11 +45,18 @@ ERROR=0
 
 echo $(man grep)
 
-echo "core files"
-ls
-echo "AMIR:"
+
+
+echo "CHANGED_FILES_PHP start:"
+echo $CHANGED_FILES_PHP
+echo "CHANGED_FILES_PHP end"
+
+
+echo "CHANGED_CORE_FILES start:"
 echo $CHANGED_CORE_FILES
-#echo ${AMIR}
+echo "CHANGED_CORE_FILES end"
+
+
 for file in ${AMIR}; do	
   RESULTS=$(php -l ${file} || true)	
 
