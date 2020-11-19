@@ -27,21 +27,16 @@ fi
 CHANGED_FILES_PHP=$(cat CHANGED_FILES | grep -P "(\.phtml|\.php)$" | grep -v -P "^((?:lib/phpseclib/)|(?:lib/Zend)|(?:/lib/PEAR)|(?:.phpstorm.meta.php)).+")	#CHANGED_FILES_PHP=$(echo "$CHANGED_FILES" | grep -P "(\.phtml|\.php)$" | grep -v -P "^((?:lib/phpseclib/)|(?:lib/Zend)|(?:/lib/PEAR)|(?:.phpstorm.meta.php)).+")
 
 echo ${CHANGED_FILES_PHP}
-while read -r php_file && [ ! -z "$local_file" ]; do
-    if ! php -d error_reporting="E_ALL & ~E_DEPRECATED" -l "$php_file"; then
-        ERROR=101
-    fi
-done <<< "$CHANGED_FILES_PHP"
 
 
-# ERROR=0	
-# for file in $(find ${DIR_TO_SCAN} -type f -name "*.php" ! -path "./vendor/*"); do	
-#   RESULTS=$(php -l ${file} || true)	
+ERROR=0	
+for file in ${CHANGED_FILES_PHP} do	
+  RESULTS=$(php -l ${file} || true)	
 
-#   if [ "${RESULTS}" != "No syntax errors detected in ${file}" ]; then	
-#     echo "\n${RESULTS}\n"	
-#     ERROR=1	
-#   fi	
-# done	
+  if [ "${RESULTS}" != "No syntax errors detected in ${file}" ]; then	
+    echo "\n${RESULTS}\n"	
+    ERROR=1	
+  fi	
+done	
 
 exit "${ERROR}"
