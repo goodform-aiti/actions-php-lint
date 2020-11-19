@@ -58,10 +58,8 @@ cat CHANGED_CORE_FILES
 echo "CHANGED_CORE_FILES end"
 
 
-for file in ${AMIR}; do	
-  RESULTS=$(php -l ${file} || true)	
-
-  if [ "${RESULTS}" != "No syntax errors detected in ${file}" ]; then	
+for file in ${CHANGED_CORE_FILES}; do		
+    RESULT="Core file is changed: ${file}"
     echo "\n${RESULTS}\n"	
     ERROR=1	
   fi	
