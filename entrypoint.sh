@@ -43,6 +43,8 @@ done
 
 ERROR=0	
 
+man grep
+
 echo "AMIR:"
 echo $(grep -P '^app/code/core/.' <<<  $CHANGED_FILES_PHP)
 #echo ${AMIR}
