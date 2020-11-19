@@ -26,6 +26,7 @@ fi
 #CHANGED_FILES=$(git diff --name-only --diff-filter=AM master...HEAD)	#CHANGED_FILES=$(git diff --name-only --diff-filter=AM master...HEAD)
 CHANGED_FILES_PHP=$(cat CHANGED_FILES | grep -P "(\.phtml|\.php)$" | grep -v -P "^((?:lib/phpseclib/)|(?:lib/Zend)|(?:/lib/PEAR)|(?:.phpstorm.meta.php)).+")	#CHANGED_FILES_PHP=$(echo "$CHANGED_FILES" | grep -P "(\.phtml|\.php)$" | grep -v -P "^((?:lib/phpseclib/)|(?:lib/Zend)|(?:/lib/PEAR)|(?:.phpstorm.meta.php)).+")
 
+# CHANGED_FILES_PHP:
 echo ${CHANGED_FILES_PHP}
 
 
@@ -38,5 +39,23 @@ for file in ${CHANGED_FILES_PHP}; do
     ERROR=1	
   fi	
 done	
+
+
+ERROR=0	
+
+# AMIR:
+AMIR= $(grep -P '^app/code/core/.' <<<  ${CHANGED_FILES_PHP})
+echo ${AMIR}
+for file in ${AMIR}; do	
+  RESULTS=$(php -l ${file} || true)	
+
+  if [ "${RESULTS}" != "No syntax errors detected in ${file}" ]; then	
+    echo "\n${RESULTS}\n"	
+    ERROR=1	
+  fi	
+done	
+
+
+
 
 exit "${ERROR}"
