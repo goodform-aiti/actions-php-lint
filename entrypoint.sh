@@ -43,8 +43,6 @@ done
 
 ERROR=0	
 
-echo $(man grep)
-
 
 
 echo "CHANGED_FILES_PHP start:"
