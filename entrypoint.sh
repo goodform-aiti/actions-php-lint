@@ -51,7 +51,7 @@ echo "CHANGED_FILES_PHP end"
 
 
 echo "CHANGED_CORE_FILES start:"
-echo $CHANGED_CORE_FILES
+cat $CHANGED_CORE_FILES
 echo "CHANGED_CORE_FILES end"
 
 
