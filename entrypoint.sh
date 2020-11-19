@@ -30,7 +30,7 @@ echo ${CHANGED_FILES_PHP}
 
 
 ERROR=0	
-for file in ${CHANGED_FILES_PHP} do	
+for file in ${CHANGED_FILES_PHP}; do	
   RESULTS=$(php -l ${file} || true)	
 
   if [ "${RESULTS}" != "No syntax errors detected in ${file}" ]; then	
