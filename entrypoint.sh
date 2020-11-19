@@ -45,8 +45,10 @@ ERROR=0
 
 echo $(man grep)
 
+echo "core files"
+ls
 echo "AMIR:"
-echo $(grep -P '^app/code/core/.' <<<  $CHANGED_FILES_PHP)
+echo $CHANGED_CORE_FILES
 #echo ${AMIR}
 for file in ${AMIR}; do	
   RESULTS=$(php -l ${file} || true)	
