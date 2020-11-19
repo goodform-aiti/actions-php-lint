@@ -62,7 +62,6 @@ for file in ${CHANGED_CORE_FILES}; do
     RESULT="Core file is changed: ${file}"
     echo "\n${RESULTS}\n"	
     ERROR=1	
-  fi	
 done	
 
 
