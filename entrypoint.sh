@@ -41,10 +41,11 @@ ERROR=0
 for file in ${CHANGED_FILES_PHP}; do	
   RESULTS=$(php -l ${file} || true)	
 
-  if [ "${RESULTS}" != "No syntax errors detected in ${file}" ]; then	
+  
+  if ! php -d error_reporting="E_ALL & ~E_DEPRECATED" -l "$file"; then
     echo "\n${RESULTS}\n"	
-    ERROR=1	
-  fi	
+    ERROR=101
+  fi
 done	
 
 
