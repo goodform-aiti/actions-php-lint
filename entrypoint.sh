@@ -24,7 +24,7 @@ fi
 
 
 #CHANGED_FILES=$(git diff --name-only --diff-filter=AM master...HEAD)	#CHANGED_FILES=$(git diff --name-only --diff-filter=AM master...HEAD)
-CHANGED_FILES_PHP=$(CAT CHANGED_FILES | grep -P "(\.phtml|\.php)$" | grep -v -P "^((?:lib/phpseclib/)|(?:lib/Zend)|(?:/lib/PEAR)|(?:.phpstorm.meta.php)).+")	#CHANGED_FILES_PHP=$(echo "$CHANGED_FILES" | grep -P "(\.phtml|\.php)$" | grep -v -P "^((?:lib/phpseclib/)|(?:lib/Zend)|(?:/lib/PEAR)|(?:.phpstorm.meta.php)).+")
+CHANGED_FILES_PHP=$(cat CHANGED_FILES | grep -P "(\.phtml|\.php)$" | grep -v -P "^((?:lib/phpseclib/)|(?:lib/Zend)|(?:/lib/PEAR)|(?:.phpstorm.meta.php)).+")	#CHANGED_FILES_PHP=$(echo "$CHANGED_FILES" | grep -P "(\.phtml|\.php)$" | grep -v -P "^((?:lib/phpseclib/)|(?:lib/Zend)|(?:/lib/PEAR)|(?:.phpstorm.meta.php)).+")
 
 echo ${CHANGED_FILES_PHP}
 
