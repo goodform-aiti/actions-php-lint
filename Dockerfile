@@ -1,4 +1,5 @@
 FROM php:7.4-cli
+FROM busybox
 
 LABEL version="7.4"
 LABEL repository="https://github.com/StephaneBour/actions-php-lint"
