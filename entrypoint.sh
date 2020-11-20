@@ -24,15 +24,11 @@ done
 
 
 for file in ${CHANGED_CORE_FILES}; do		
-    RESULT="Core file is changed: ${file}"
-    ##echo "\n${RESULTS}\n"	
-    
-    echo "yohooooooooooooooooooooo"
+    RESULTS="Core file is changed: ${file}"
+    echo "\n${RESULTS}\n"	
     ERROR=1	
 done	
 
-echo "error code is:"
-echo ${ERROR}
 
 
 exit "${ERROR}"
