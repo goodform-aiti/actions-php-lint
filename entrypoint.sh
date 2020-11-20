@@ -2,9 +2,11 @@
 set -e
 
 CHANGED_FILES=$(git diff --name-only --diff-filter=AM ${PREVIOUS_COMMIT} ${CURRENT_COMMIT})
+echo "amir rrrr omid" | grep -P "amir"
+exit 0
 
 CHANGED_FILES_PHP=$(echo ${CHANGED_FILES} | grep -P "(\.phtml|\.php)$")
-exit 0
+
 
 PHP_FULL_VERSION=$(php -r 'echo phpversion();')	
 
