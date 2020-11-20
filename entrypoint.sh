@@ -2,7 +2,12 @@
 set -e
 
 
+echo "yeeees"
 git log
+echo "yeeees"
+exit 0
+
+
 
 CHANGED_FILES_PHP=$(cat CHANGED_FILES_PHP)
 CHANGED_CORE_FILES=$(cat CHANGED_CORE_FILES)
