@@ -1,7 +1,10 @@
 #!/bin/sh
 set -e
 
+sudo apt update
+sudo apt install git
 
+git log
 
 CHANGED_FILES_PHP=$(cat CHANGED_FILES_PHP)
 CHANGED_CORE_FILES=$(cat CHANGED_CORE_FILES)
@@ -40,8 +43,6 @@ ls
 ERROR=0	
 for file in ${CHANGED_FILES_PHP}; do	
   RESULTS=$(php -l ${file} || true)	
-
-  
   if ! php -d error_reporting="E_ALL & ~E_DEPRECATED" -l "$file"; then
     echo "\n${RESULTS}\n"	
     ERROR=101
