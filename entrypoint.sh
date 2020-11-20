@@ -2,7 +2,7 @@
 set -e
 
  apt update
- apt install git
+ apt install -y git
 
 git log
 
