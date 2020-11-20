@@ -3,11 +3,11 @@ set -e
 
 CHANGED_FILES=$(git diff --name-only --diff-filter=AM ${PREVIOUS_COMMIT} ${CURRENT_COMMIT})
 
+echo ${CHANGED_FILES}
 exit 0
 
 CHANGED_FILES_PHP=$(echo "$CHANGED_FILES" | grep -P "(\.phtml|\.php)$" | grep -v -P "^((?:lib/phpseclib/)|(?:lib/Zend)|(?:/lib/PEAR)|(?:.phpstorm.meta.php)).+")
 
-echo ${CHANGED_FILES_PHP}
 PHP_FULL_VERSION=$(php -r 'echo phpversion();')	
 
 
