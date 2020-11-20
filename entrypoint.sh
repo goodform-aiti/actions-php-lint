@@ -2,7 +2,7 @@
 set -e
 
 CHANGED_FILES=$(git diff --name-only --diff-filter=AM ${PREVIOUS_COMMIT} ${CURRENT_COMMIT})
-echo "amir rrrr omid" | grep -P "amir"
+echo $(find ${CHANGED_FILES} -type f -name "*.php" ! -path "./vendor/*")
 exit 0
 
 CHANGED_FILES_PHP=$(echo ${CHANGED_FILES} | grep -P "(\.phtml|\.php)$")
