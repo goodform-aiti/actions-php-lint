@@ -7,5 +7,9 @@ LABEL maintainer="Stéphane Bour <stephane.bour@gmail.com>"
 
 COPY "entrypoint.sh" "/entrypoint.sh"
 
+RUN apt-get update && \
+    apt-get upgrade -y && \
+    apt-get install -y git
+
 RUN chmod +x /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
