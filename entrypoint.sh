@@ -2,7 +2,7 @@
 set -e
 
 CHANGED_FILES=$(git diff --name-only --diff-filter=AM ${PREVIOUS_COMMIT} ${CURRENT_COMMIT})
-CHANGED_FILES_PHP=$(find "index.php" -type f -regex "^.*\(\.php\|\.phtml\)$" ! -path "./vendor/*")
+CHANGED_FILES_PHP=$(find ${CHANGED_FILES} -type f -regex "^.*\(\.php\|\.phtml\)$" ! -path "./vendor/*")
 
 
 PHP_FULL_VERSION=$(php -r 'echo phpversion();')	
