@@ -1,8 +1,8 @@
 #!/bin/sh
 set -e
 
-sudo apt update
-sudo apt install git
+ apt update
+ apt install git
 
 git log
 
