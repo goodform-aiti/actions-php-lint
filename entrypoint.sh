@@ -2,10 +2,7 @@
 set -e
 
 CHANGED_FILES=$(git diff --name-only --diff-filter=AM ${PREVIOUS_COMMIT} ${CURRENT_COMMIT})
-echo $(find ${CHANGED_FILES} -type f -name "*.php" ! -path "./vendor/*")
-exit 0
-
-CHANGED_FILES_PHP=$(echo ${CHANGED_FILES} | grep -P "(\.phtml|\.php)$")
+CHANGED_FILES_PHP=$(find "index.php" -type f -regex "^.*\(\.php\|\.phtml\)$" ! -path "./vendor/*")
 
 
 PHP_FULL_VERSION=$(php -r 'echo phpversion();')	
@@ -51,21 +48,21 @@ done
 
 
 
-echo "CHANGED_FILES_PHP start:"
-echo ${CHANGED_FILES_PHP}
-echo "CHANGED_FILES_PHP end"
+# echo "CHANGED_FILES_PHP start:"
+# echo ${CHANGED_FILES_PHP}
+# echo "CHANGED_FILES_PHP end"
 
 
-echo "CHANGED_CORE_FILES start:"
-echo ${CHANGED_CORE_FILES}
-echo "CHANGED_CORE_FILES end"
+# echo "CHANGED_CORE_FILES start:"
+# echo ${CHANGED_CORE_FILES}
+# echo "CHANGED_CORE_FILES end"
 
 
-for file in ${CHANGED_CORE_FILES}; do		
-    RESULT="Core file is changed: ${file}"
-    echo "\n${RESULTS}\n"	
-    ERROR=1	
-done	
+# for file in ${CHANGED_CORE_FILES}; do		
+#     RESULT="Core file is changed: ${file}"
+#     echo "\n${RESULTS}\n"	
+#     ERROR=1	
+# done	
 
 
 
