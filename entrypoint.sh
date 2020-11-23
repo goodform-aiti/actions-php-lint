@@ -1,16 +1,10 @@
 #!/bin/sh
 set -e
 
-git branch -a
 git fetch origin main
-git checkout main
-git branch
-echo "log::::::::::::::"
-git log
-exit 0
 
 
-CHANGED_FILES=$(git diff --name-only --diff-filter=AM main)
+CHANGED_FILES=$(git diff --name-only --diff-filter=AM main...HEAD)
 CHANGED_FILES_PHP=$(find ${CHANGED_FILES} -type f -regex "^.*\(\.php\|\.phtml\)$")
 
 PHP_FULL_VERSION=$(php -r 'echo phpversion();')	
