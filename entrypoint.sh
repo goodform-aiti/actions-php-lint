@@ -1,7 +1,7 @@
 #!/bin/sh
 set -e
 
-
+git fetch master:master
 git branch -a
 
 git status
