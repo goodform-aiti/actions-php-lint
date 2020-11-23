@@ -2,7 +2,7 @@
 set -e
 
 
-git branch
+git branch -a
 
 git status
 exit 0
