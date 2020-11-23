@@ -2,7 +2,7 @@
 set -e
 
 
-git -C "$GITHUB_WORKSPACE" reset --soft main
+git branch
 
 git status
 exit 0
