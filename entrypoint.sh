@@ -2,7 +2,7 @@
 set -e
 
 git branch -a
-git fetch origin master
+git fetch origin main
 git branch
 
 git status
