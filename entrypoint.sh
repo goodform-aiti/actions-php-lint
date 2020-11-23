@@ -1,6 +1,13 @@
 #!/bin/sh
 set -e
 
+
+
+git checkout main
+git log
+
+
+
 CHANGED_FILES=$(git diff --name-only --diff-filter=AM main)
 CHANGED_FILES_PHP=$(find ${CHANGED_FILES} -type f -regex "^.*\(\.php\|\.phtml\)$")
 
