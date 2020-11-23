@@ -23,12 +23,6 @@ done
 
 
 
-for file in ${CHANGED_CORE_FILES}; do		
-    RESULTS="Core file is changed: ${file}"
-    echo "\n${RESULTS}\n"	
-    ERROR=1	
-done	
-
 
 
 exit "${ERROR}"
