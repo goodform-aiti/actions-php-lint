@@ -4,8 +4,8 @@ set -e
 git branch -a
 git fetch origin main
 git branch
-
-git status
+echo "log::::::::::::::"
+git log
 exit 0
 
 
