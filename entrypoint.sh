@@ -2,7 +2,10 @@
 set -e
 
 
-echo $(git branch)
+git -C "$GITHUB_WORKSPACE" reset --soft main
+
+git status
+exit 0
 
 
 CHANGED_FILES=$(git diff --name-only --diff-filter=AM main)
