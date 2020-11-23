@@ -5,7 +5,7 @@ git fetch origin main
 echo "*****************************"
 echo "*****************************"
 echo "*************** git branch"
-git branch
+git branch -a
 echo "*****************************"
 echo "*****************************"
 # git checkout main
