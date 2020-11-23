@@ -1,7 +1,15 @@
 #!/bin/sh
 set -e
 
+echo "**********************fetch:"
 git fetch origin main
+
+echo "********************git branch:"
+git branch
+
+
+echo "*******************git log:"
+git log
 
 
 CHANGED_FILES=$(git diff --name-only --diff-filter=AM main...HEAD)
