@@ -3,7 +3,7 @@ set -e
 
 git fetch origin main
 git checkout main
-CHANGED_FILES=$(git diff --name-only --diff-filter=AM ${CURRENT_COMMIT}...main)
+CHANGED_FILES=$(git diff --name-only --diff-filter=AM main...test2)
 CHANGED_FILES_PHP=$(find ${CHANGED_FILES} -type f -regex "^.*\(\.php\|\.phtml\)$")
 
 echo " ************** changed files"
