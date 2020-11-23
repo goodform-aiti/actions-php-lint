@@ -3,7 +3,6 @@ set -e
 
 CHANGED_FILES=$(git diff --name-only --diff-filter=AM ${PREVIOUS_COMMIT} ${CURRENT_COMMIT})
 CHANGED_FILES_PHP=$(find ${CHANGED_FILES} -type f -regex "^.*\(\.php\|\.phtml\)$")
-CHANGED_CORE_FILES=$(find ${CHANGED_FILES} -type f -regex "^\(app/code/core\|app/design/frontend/base\|app/design/adminhtml/base\)/.+$")
 
 PHP_FULL_VERSION=$(php -r 'echo phpversion();')	
 echo "## Running PHP Syntax Checker (lint) on ${DIR_TO_SCAN}"	
