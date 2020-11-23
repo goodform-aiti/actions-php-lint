@@ -2,6 +2,12 @@
 set -e
 
 git fetch origin main
+echo "*****************************"
+echo "*****************************"
+echo "*************** git branch"
+git branch
+echo "*****************************"
+echo "*****************************"
 # git checkout main
 
 CHANGED_FILES=$(git diff --diff-filter=AM  --name-only origin/master)
