@@ -1,8 +1,9 @@
 #!/bin/sh
 set -e
 
-git fetch master
 git branch -a
+git fetch origin master
+git branch
 
 git status
 exit 0
