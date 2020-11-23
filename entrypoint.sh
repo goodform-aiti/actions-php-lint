@@ -1,30 +1,9 @@
 #!/bin/sh
 set -e
 
-echo "**********************fetch:"
 git fetch origin main
-
-echo "********************git branch:"
-git branch
-
-
-# echo "*******************git log:"
-# git log
-
-
-echo "*******************git checkout main:"
 git checkout main
-
-# echo "*******************git log:"
-# git log
-
-
 CHANGED_FILES=$(git diff --name-only --diff-filter=AM main...my-test)
-
-echo "******************changed files"
-echo ${CHANGED_FILES}
-
-
 CHANGED_FILES_PHP=$(find ${CHANGED_FILES} -type f -regex "^.*\(\.php\|\.phtml\)$")
 
 PHP_FULL_VERSION=$(php -r 'echo phpversion();')	
