@@ -2,10 +2,7 @@
 set -e
 
 
-
-git checkout main
-git log
-
+echo $(git branch)
 
 
 CHANGED_FILES=$(git diff --name-only --diff-filter=AM main)
