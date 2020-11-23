@@ -3,6 +3,7 @@ set -e
 
 git branch -a
 git fetch origin main
+git checkout main
 git branch
 echo "log::::::::::::::"
 git log
