@@ -4,7 +4,7 @@ set -e
 git fetch origin main
 # git checkout main
 
-CHANGED_FILES=$(git diff --diff-filter=AM  --name-only $(git merge-base HEAD origin/master))
+CHANGED_FILES=$(git diff --diff-filter=AM  --name-only origin/master)
 
 CHANGED_FILES_PHP=$(find ${CHANGED_FILES} -type f -regex "^.*\(\.php\|\.phtml\)$")
 
