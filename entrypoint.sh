@@ -4,7 +4,9 @@ set -e
 echo "*******************"
 echo ${MODIFIED_FILES}
 echo "*******************"
-for i in "${!MODIFIED_FILES[@]}"
+set -f                      # avoid globbing (expansion of *).
+array=(${MODIFIED_FILES//:/ })
+for i in "${!array[@]}"
 do
     echo "$i=>${array[i]}"
 done
