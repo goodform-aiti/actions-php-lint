@@ -15,6 +15,10 @@ set -e
 
 # exit 0
 
+echo "**********ls:"
+ls -l
+
+
 CHANGED_FILES_PHP=$(find ${MODIFIED_FILES} -type f -regex "^.*\(\.php\|\.phtml\)$")
 
 echo " ************** MODIFIED FILES"
