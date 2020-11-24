@@ -17,14 +17,9 @@ echo "PHP Version : ${PHP_FULL_VERSION}"
 ERROR=0	
 for file in ${CHANGED_FILES_PHP}; do	
   if ! php -d error_reporting="E_ALL & ~E_DEPRECATED" -l "$file"; then
-    ERROR=101
+    ERROR=1
   fi
 done	
-
-
-
-
-
 
 
 exit "${ERROR}"
