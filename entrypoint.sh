@@ -1,26 +1,6 @@
 #!/bin/bash
 set -e
 
-# echo "*******************"
-# echo ${MODIFIED_FILES}
-# echo "*******************"
-# MODIFIED_FILES_ARRAY=(`echo ${MODIFIED_FILES} | sed 's/,/\n/g'`)
-# for i in "${!MODIFIED_FILES_ARRAY[@]}"
-# do
-#     echo "$i=>${MODIFIED_FILES_ARRAY[i]}"
-# done
-# echo "*******************"
-
-
-
-# exit 0
-
-echo "**********ls:"
-ls -l
-echo "**********pwd:"
-pwd
-
-
 CHANGED_FILES_PHP=$(find ${MODIFIED_FILES} -type f -regex "^.*\(\.php\|\.phtml\)$")
 
 echo " ************** MODIFIED FILES"
