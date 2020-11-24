@@ -6,7 +6,7 @@ echo ${MODIFIED_FILES}
 echo "*******************"
 string="1:2:3:4:5"
 set -f                      # avoid globbing (expansion of *).
-array=(${string//:/ })
+array=(`echo $string | sed 's/,/\n/g'`)
 for i in "${!array[@]}"
 do
     echo "$i=>${array[i]}"
