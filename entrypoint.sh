@@ -1,11 +1,11 @@
-#!/bin/sh
+#!/bin/bash
 set -e
 
 echo "*******************"
 echo ${MODIFIED_FILES}
 echo "*******************"
 string="1:2:3:4:5"
-array=(`echo $string | sed 's/,/\n/g'`)
+array=(`echo $string | sed 's/:/\n/g'`)
 echo $array
 for i in "${!array[@]}"
 do
