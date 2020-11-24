@@ -1,35 +1,24 @@
 #!/bin/bash
 set -e
 
-echo "*******************"
+# echo "*******************"
+# echo ${MODIFIED_FILES}
+# echo "*******************"
+# MODIFIED_FILES_ARRAY=(`echo ${MODIFIED_FILES} | sed 's/,/\n/g'`)
+# for i in "${!MODIFIED_FILES_ARRAY[@]}"
+# do
+#     echo "$i=>${MODIFIED_FILES_ARRAY[i]}"
+# done
+# echo "*******************"
+
+
+
+# exit 0
+
+CHANGED_FILES_PHP=$(find ${MODIFIED_FILES} -type f -regex "^.*\(\.php\|\.phtml\)$")
+
+echo " ************** MODIFIED FILES"
 echo ${MODIFIED_FILES}
-echo "*******************"
-MODIFIED_FILES_ARRAY=(`echo ${MODIFIED_FILES} | sed 's/,/\n/g'`)
-for i in "${!MODIFIED_FILES_ARRAY[@]}"
-do
-    echo "$i=>${MODIFIED_FILES_ARRAY[i]}"
-done
-echo "*******************"
-
-
-
-exit 0
-
-git fetch origin main
-echo "*****************************"
-echo "*****************************"
-echo "*************** git branch"
-git branch -a
-echo "*****************************"
-echo "*****************************"
-# git checkout main
-
-CHANGED_FILES=$(git diff --diff-filter=AM  --name-only origin/master...)
-
-CHANGED_FILES_PHP=$(find ${CHANGED_FILES} -type f -regex "^.*\(\.php\|\.phtml\)$")
-
-echo " ************** changed files"
-echo ${CHANGED_FILES}
 
 echo "**************** changed files php"
 echo ${CHANGED_FILES_PHP}
