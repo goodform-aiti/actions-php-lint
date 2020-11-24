@@ -5,7 +5,7 @@ echo "*******************"
 echo ${MODIFIED_FILES}
 echo "*******************"
 set -f                      # avoid globbing (expansion of *).
-array=(${MODIFIED_FILES//:/ })
+array=(${MODIFIED_FILES//,/ })
 for i in "${!array[@]}"
 do
     echo "$i=>${array[i]}"
