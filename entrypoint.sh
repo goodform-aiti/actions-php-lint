@@ -4,11 +4,10 @@ set -e
 echo "*******************"
 echo ${MODIFIED_FILES}
 echo "*******************"
-array=(`echo ${MODIFIED_FILES} | sed 's/,/\n/g'`)
-echo $array
-for i in "${!array[@]}"
+MODIFIED_FILES_ARRAY=(`echo ${MODIFIED_FILES} | sed 's/,/\n/g'`)
+for i in "${!MODIFIED_FILES_ARRAY[@]}"
 do
-    echo "$i=>${array[i]}"
+    echo "$i=>${MODIFIED_FILES_ARRAY[i]}"
 done
 echo "*******************"
 
