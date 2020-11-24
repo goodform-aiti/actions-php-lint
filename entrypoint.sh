@@ -17,6 +17,8 @@ set -e
 
 echo "**********ls:"
 ls -l
+echo "**********pwd:"
+pwd
 
 
 CHANGED_FILES_PHP=$(find ${MODIFIED_FILES} -type f -regex "^.*\(\.php\|\.phtml\)$")
