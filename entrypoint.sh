@@ -1,6 +1,11 @@
 #!/bin/sh
 set -e
 
+echo "*******************"
+echo ${MODIFIED_FILES}
+
+exit 0
+
 git fetch origin main
 echo "*****************************"
 echo "*****************************"
