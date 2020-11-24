@@ -4,7 +4,6 @@ set -e
 echo "*******************"
 echo ${MODIFIED_FILES}
 echo "*******************"
-array=(${string//:/ })
 for i in "${!MODIFIED_FILES[@]}"
 do
     echo "$i=>${array[i]}"
