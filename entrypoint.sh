@@ -4,8 +4,9 @@ set -e
 echo "*******************"
 echo ${MODIFIED_FILES}
 echo "*******************"
+string="1:2:3:4:5"
 set -f                      # avoid globbing (expansion of *).
-array=(${MODIFIED_FILES//,/ })
+array=(${string//:/ })
 for i in "${!array[@]}"
 do
     echo "$i=>${array[i]}"
