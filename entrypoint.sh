@@ -15,8 +15,15 @@ ERROR=0
 paths=(${MODIFIED_FILES//,/ })
 for i in "${!paths[@]}"
 do
-    if [[ ${paths[i]} =~ ^(.+)\.php|phtml$ ]] ; then
-       if ! php -d error_reporting="E_ALL & ~E_DEPRECATED" -l "${paths[i]}"; then
+    filteredPath=$(echo ${paths[i]}  | grep -P "(\.phtml|\.php)$" | grep -v -P "^((?:lib/phpseclib/)|(?:lib/Zend)|(?:/lib/PEAR)|(?:.phpstorm.meta.php)).+")
+    if [[ $filteredPath ]] ; then
+       if [ ! -f ${paths[i]} ] # file not exist
+       then
+          continue
+       fi
+
+       if ! php -d error_reporting="E_ALL & ~E_DEPRECATED" -l "${paths[i]}" # checking php syntax
+       then
           ERROR=1
        fi
     fi
