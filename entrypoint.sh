@@ -16,7 +16,7 @@ paths=(${MODIFIED_FILES//,/ })
 for i in "${!paths[@]}"
 do
     echo "1111"
-    filteredPath=$(echo ${paths[i]}  | grep -P "(\.phtml|\.php)$")
+    filteredPath=$(echo ${paths[i]}  | grep -P "(\.phtml|\.php)$"  | grep -v -P "^((?:lib/phpseclib/)|(?:lib/Zend)|(?:/lib/PEAR)|(?:.phpstorm.meta.php)).+") | xargs -r -l -d'\n' find 2>/dev/null)
     echo "2222"
     if [[ $filteredPath ]] ; then
        echo "3333"
