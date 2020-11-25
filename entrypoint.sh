@@ -19,22 +19,20 @@ do
 #     filteredPath=$(echo ${paths[i]}  | grep -P "(\.phtml|\.php)$"  | grep -v -P "^((?:lib/phpseclib/)|(?:lib/Zend)|(?:/lib/PEAR)|(?:.phpstorm.meta.php)).+")
 
     if [[ ! ${paths[i]} =~ ^(.+)\.(php|phtml)$ ]] ; then
-        echo "this is not php: ${paths[i]}"
+        echo "skip: ${paths[i]} (this is not php)"
         continue
     fi
     if [[ ${paths[i]} =~ ^((lib\/phpseclib\/)|(lib\/Zend)|(\/lib\/PEAR)|(\.phpstorm\.meta\.php)).* ]] ; then
-        echo "this is lib: ${paths[i]}"
+        echo "skip: ${paths[i]} (this is lib)"
+        continue
     fi
-    echo "this is php ${paths[i]}"
    if [ ! -f ${paths[i]} ] # file not exist
    then
-     echo "4444"
       continue
    fi
 
    if ! php -d error_reporting="E_ALL & ~E_DEPRECATED" -l "${paths[i]}" # checking php syntax
    then
-        echo "5555"
       ERROR=1
    fi
 done
