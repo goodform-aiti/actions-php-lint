@@ -16,7 +16,7 @@ paths=(${MODIFIED_FILES//,/ })
 for i in "${!paths[@]}"
 do
     echo "1111"
-    filteredPath=$(echo ${paths[i]}  | grep -P "(\.phtml|\.php)$"
+    filteredPath=$(echo ${paths[i]}  | grep -P "(\.phtml|\.php)$")
     echo "2222"
     if [[ $filteredPath ]] ; then
        echo "3333"
