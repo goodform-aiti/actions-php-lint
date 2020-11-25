@@ -16,22 +16,24 @@ paths=(${MODIFIED_FILES//,/ })
 for i in "${!paths[@]}"
 do
     echo "1111"
-    filteredPath=$(echo ${paths[i]}  | grep -P "(\.phtml|\.php)$"  | grep -v -P "^((?:lib/phpseclib/)|(?:lib/Zend)|(?:/lib/PEAR)|(?:.phpstorm.meta.php)).+") | xargs -r -l -d'\n' find 2>/dev/null)
-    echo "2222"
-    if [[ $filteredPath ]] ; then
-       echo "3333"
-       if [ ! -f ${paths[i]} ] # file not exist
-       then
-         echo "4444"
-          continue
-       fi
+#     filteredPath=$(echo ${paths[i]}  | grep -P "(\.phtml|\.php)$"  | grep -v -P "^((?:lib/phpseclib/)|(?:lib/Zend)|(?:/lib/PEAR)|(?:.phpstorm.meta.php)).+")
 
-       if ! php -d error_reporting="E_ALL & ~E_DEPRECATED" -l "${paths[i]}" # checking php syntax
-       then
-            echo "5555"
-          ERROR=1
-       fi
+    if [[ ! ${paths[i]} =~ ^(.+)\.(php|phtml)$ ]] ; then
+        echo "this is not php: ${PATHS[i]}"
+        continue
     fi
+    echo "this is php ${PATHS[i]}"
+   if [ ! -f ${paths[i]} ] # file not exist
+   then
+     echo "4444"
+      continue
+   fi
+
+   if ! php -d error_reporting="E_ALL & ~E_DEPRECATED" -l "${paths[i]}" # checking php syntax
+   then
+        echo "5555"
+      ERROR=1
+   fi
 done
 
 
