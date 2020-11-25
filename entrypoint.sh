@@ -1,32 +1,38 @@
-#!/bin/sh
+#!/bin/bash
 set -e
 
-PHP_FULL_VERSION=$(php -r 'echo phpversion();')
 
-if [ -z "$1" ]; then
-  DIR_TO_SCAN="."
-else
-  DIR_TO_SCAN="$1"
-fi
+echo " ************** MODIFIED FILES"
+echo ${MODIFIED_FILES}
+echo " ******************************"
 
-echo "## Running PHP Syntax Checker (lint) on ${DIR_TO_SCAN}"
-echo "PHP Version : ${PHP_FULL_VERSION}"
+PHP_FULL_VERSION=$(php -r 'echo phpversion();')	
+echo "## Running PHP Syntax Checker (lint) on ${DIR_TO_SCAN}"	
+echo "PHP Version : ${PHP_FULL_VERSION}"	
 
-if [ ! -d "${DIR_TO_SCAN}" ] && [ ! -f "${DIR_TO_SCAN}" ]; then
-  echo "\nInvalid directory or file: ${DIR_TO_SCAN}"
-  echo "\n\n"
 
-  exit 2
-fi
+ERROR=0	
+paths=(${MODIFIED_FILES//,/ })
+for i in "${!paths[@]}"
+do
+    if [[ ! ${paths[i]} =~ ^(.+)\.(php|phtml)$ ]] ; then
+        echo "skip: ${paths[i]} (this is not php)"
+        continue
+    fi
+    if [[ ${paths[i]} =~ ^((lib\/phpseclib\/)|(lib\/Zend)|(\/lib\/PEAR)|(\.phpstorm\.meta\.php)).* ]] ; then
+        echo "skip: ${paths[i]} (this is lib)"
+        continue
+    fi
+   if [ ! -f ${paths[i]} ] # file not exist
+   then
+      continue
+   fi
 
-ERROR=0
-for file in $(find ${DIR_TO_SCAN} -type f -name "*.php" ! -path "./vendor/*"); do
-  RESULTS=$(php -l ${file} || true)
-
-  if [ "${RESULTS}" != "No syntax errors detected in ${file}" ]; then
-    echo "\n${RESULTS}\n"
-    ERROR=1
-  fi
+   if ! php -d error_reporting="E_ALL & ~E_DEPRECATED" -l "${paths[i]}" # checking php syntax
+   then
+      ERROR=1
+   fi
 done
+
 
 exit "${ERROR}"
