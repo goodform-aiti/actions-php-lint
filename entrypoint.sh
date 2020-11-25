@@ -19,10 +19,14 @@ do
 #     filteredPath=$(echo ${paths[i]}  | grep -P "(\.phtml|\.php)$"  | grep -v -P "^((?:lib/phpseclib/)|(?:lib/Zend)|(?:/lib/PEAR)|(?:.phpstorm.meta.php)).+")
 
     if [[ ! ${paths[i]} =~ ^(.+)\.(php|phtml)$ ]] ; then
-        echo "this is not php: ${PATHS[i]}"
+        echo "this is not php: ${paths[i]}"
         continue
     fi
-    echo "this is php ${PATHS[i]}"
+    if [[ ! ${paths[i]} =~ ^((?:lib/phpseclib/)|(?:lib/Zend)|(?:/lib/PEAR)|(?:.phpstorm.meta.php)).+ ]] ; then
+        echo "this is lib: ${paths[i]}"
+        continue
+    fi
+    echo "this is php ${paths[i]}"
    if [ ! -f ${paths[i]} ] # file not exist
    then
      echo "4444"
