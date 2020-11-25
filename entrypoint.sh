@@ -22,9 +22,8 @@ do
         echo "this is not php: ${paths[i]}"
         continue
     fi
-    if [[ ! ${paths[i]} =~ ^((?:lib\/phpseclib\/)|(?:lib\/Zend)|(?:\/lib\/PEAR)|(?:\.phpstorm\.meta\.php)).+ ]] ; then
+    if [[ ${paths[i]} =~ ^((lib\/phpseclib\/)|(lib\/Zend)|(\/lib\/PEAR)|(\.phpstorm\.meta\.php)).* ]] ; then
         echo "this is lib: ${paths[i]}"
-        continue
     fi
     echo "this is php ${paths[i]}"
    if [ ! -f ${paths[i]} ] # file not exist
