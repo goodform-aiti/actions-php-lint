@@ -15,9 +15,6 @@ ERROR=0
 paths=(${MODIFIED_FILES//,/ })
 for i in "${!paths[@]}"
 do
-    echo "1111"
-#     filteredPath=$(echo ${paths[i]}  | grep -P "(\.phtml|\.php)$"  | grep -v -P "^((?:lib/phpseclib/)|(?:lib/Zend)|(?:/lib/PEAR)|(?:.phpstorm.meta.php)).+")
-
     if [[ ! ${paths[i]} =~ ^(.+)\.(php|phtml)$ ]] ; then
         echo "skip: ${paths[i]} (this is not php)"
         continue
