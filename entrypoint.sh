@@ -16,6 +16,8 @@ paths=(${MODIFIED_FILES//,/ })
 for i in "${!paths[@]}"
 do
     echo ${MODIFIED_FILES}
+    echo " ***** "
+    echo ${paths[0]}
     filteredPath=$(echo ${paths[i]}  | grep -P "(\.phtml|\.php)$" | grep -v -P "^((?:lib/phpseclib/)|(?:lib/Zend)|(?:/lib/PEAR)|(?:.phpstorm.meta.php)).+")
     echo "2222"
     if [[ $filteredPath ]] ; then
