@@ -3,7 +3,7 @@ set -e
 
 
 echo " ************** MODIFIED FILES"
-echo ${MODIFIED_FILES}
+printf ${MODIFIED_FILES}
 echo " ******************************"
 
 PHP_FULL_VERSION=$(php -r 'echo phpversion();')	
