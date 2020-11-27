@@ -4,9 +4,6 @@ set -e
 
 echo " ************** MODIFIED FILES"
 printf ${MODIFIED_FILES}
-echo -e "my\ntest"
-printf "my\ntest"
-echo $'my\ntest'
 echo " ******************************"
 
 PHP_FULL_VERSION=$(php -r 'echo phpversion();')	
@@ -15,7 +12,7 @@ echo "PHP Version : ${PHP_FULL_VERSION}"
 
 
 ERROR=0	
-paths=(${MODIFIED_FILES//,/ })
+paths=(${MODIFIED_FILES//\n/ })
 for i in "${!paths[@]}"
 do
     if [[ ! ${paths[i]} =~ ^(.+)\.(php|phtml)$ ]] ; then
