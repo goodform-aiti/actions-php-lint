@@ -4,7 +4,7 @@ set -e
 
 echo " ************** MODIFIED FILES"
 printf ${MODIFIED_FILES}
-echo " ******************************"
+printf "\n******************************"
 
 PHP_FULL_VERSION=$(php -r 'echo phpversion();')	
 echo "## Running PHP Syntax Checker (lint) on ${DIR_TO_SCAN}"	
