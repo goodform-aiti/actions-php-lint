@@ -3,10 +3,8 @@ set -e
 
 
 echo " ************** MODIFIED FILES"
+
 printf ${MODIFIED_FILES}
-echo -e "my\ntest"
-printf "my\ntest"
-echo $'my\ntest'
 
 echo " ******************************"
 
